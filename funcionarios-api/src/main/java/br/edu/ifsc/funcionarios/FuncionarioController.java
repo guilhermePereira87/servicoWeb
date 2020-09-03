@@ -33,12 +33,12 @@ public class FuncionarioController {
 		return FuncionarioDataSource.getListaFuncionario();
 	}
 	
-	@RequestMapping(value="/buscar/{idx}")
+	@RequestMapping(value="/buscar/{matricula}")
 	public Funcionario buscarFuncionario(
-			@PathVariable("idx") int idx) {
-		Funcionario funcionario = FuncionarioDataSource.getListaFuncionario().get(idx);
-		return funcionario;		
+			@PathVariable("matricula") int matricula) {
+		return FuncionarioDataSource.pesquisarPorMatricula(matricula);		
 	}
+	
 	
 	@RequestMapping(value="/salario/{idx}")
 	public double buscarSalario(
@@ -46,5 +46,7 @@ public class FuncionarioController {
 		Funcionario funcionario = FuncionarioDataSource.getListaFuncionario().get(idx);
 		return funcionario.calcularSalario();		
 	}
+	
+	
 	
 }
